@@ -1,0 +1,141 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "tag": "remote_dns",
+        "address": "tcp://1.1.1.1",
+        "address_strategy": "ipv4_only",
+        "strategy": "ipv4_only",
+        "detour": "GLOBAL"
+      },
+      {
+        "tag": "local",
+        "address": "112.215.198.254",
+        "address_strategy": "ipv4_only",
+        "strategy": "ipv4_only",
+        "detour": "direct"
+      },
+      {
+        "tag": "rcode",
+        "address": "rcode://refused"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "local",
+        "disable_cache": true
+      },
+      {
+        "rule_set": [
+          "domain",
+          "geosite-category-ads-all",
+          "geosite-oisd-full"
+        ],
+        "server": "rcode",
+        "disable_cache": true
+      }
+    ],
+    "final": "remote_dns",
+    "strategy": "ipv4_only"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "interface_name": "utun",
+      "mtu": 9000,
+      "inet4_address": "172.18.0.1/30",
+      "auto_route": true,
+      "inet4_route_exclude_address": "192.168.0.0/16",
+      "stack": "gvisor",
+      "sniff": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "vless",
+      "tag": "atp.sing-box.id",
+      "domain_strategy": "ipv4_only",
+      "server": "quiz.int.vidio.com",
+      "server_port": 80,
+      "uuid": "ddd4b0f8-2814-44c1-8519-958674f4df7f",
+      "tls": {
+        "enabled": false,
+        "insecure": false,
+        "server_name": "static-web.prod.vidiocdn.com"
+      },
+      "transport": {
+        "type": "httpupgrade",
+        "host": "atp.sing-box.id",
+        "path": "/buy-vless-upgrade-pm-telegram-at-synricha"
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "selector",
+      "tag": "GLOBAL",
+      "outbounds": [
+        "atp.sing-box.id",
+        "direct"
+      ]
+    },
+    {
+      "type": "dns",
+      "tag": "dns"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "port": 53,
+        "outbound": "dns"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "domain",
+        "path": "file/domain.json",
+        "format": "source",
+        "url": "https://raw.githubusercontent.com/ggschatzi/any/main/domain.json",
+        "download_detour": "direct",
+        "update_interval": "24h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-category-ads-all",
+        "path": "file/geosite-category-ads-all.srs",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/malikshi/sing-box-geo/rule-set-geosite/geosite-category-ads-all.srs",
+        "download_detour": "direct",
+        "update_interval": "24h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-oisd-full",
+        "path": "file/geosite-oisd-full.srs",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/malikshi/sing-box-geo/rule-set-geosite/geosite-oisd-full.srs",
+        "download_detour": "direct",
+        "update_interval": "24h0m0s"
+      }
+    ],
+    "final": "GLOBAL",
+    "auto_detect_interface": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "0.0.0.0:9090",
+      "external_ui": "dashboard"
+    }
+  }
+}
