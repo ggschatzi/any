@@ -58,16 +58,16 @@
       "tag": "atp.sing-box.id",
       "domain_strategy": "ipv4_only",
       "server": "quiz.int.vidio.com",
-      "server_port": 80,
+      "server_port": 443,
       "uuid": "ddd4b0f8-2814-44c1-8519-958674f4df7f",
       "tls": {
-        "enabled": false,
-        "insecure": false,
-        "server_name": "static-web.prod.vidiocdn.com"
+        "enabled": true,
+        "insecure": true,
+        "server_name": "quiz.int.vidio.com.atp.sing-box.id"
       },
       "transport": {
         "type": "httpupgrade",
-        "host": "atp.sing-box.id",
+        "host": "quiz.int.vidio.com.atp.sing-box.id",
         "path": "/buy-vless-upgrade-pm-telegram-at-synricha"
       },
       "packet_encoding": "xudp"
@@ -107,7 +107,7 @@
         "path": "file/domain.json",
         "format": "source",
         "url": "https://raw.githubusercontent.com/ggschatzi/any/main/domain.json",
-        "download_detour": "direct",
+        "download_detour": "GLOBAL",
         "update_interval": "24h0m0s"
       },
       {
@@ -116,7 +116,7 @@
         "path": "file/geosite-category-ads-all.srs",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/malikshi/sing-box-geo/rule-set-geosite/geosite-category-ads-all.srs",
-        "download_detour": "direct",
+        "download_detour": "GLOBAL",
         "update_interval": "24h0m0s"
       },
       {
@@ -125,7 +125,7 @@
         "path": "file/geosite-oisd-full.srs",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/malikshi/sing-box-geo/rule-set-geosite/geosite-oisd-full.srs",
-        "download_detour": "direct",
+        "download_detour": "GLOBAL",
         "update_interval": "24h0m0s"
       }
     ],
