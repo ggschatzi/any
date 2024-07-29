@@ -14,25 +14,12 @@
         "address_strategy": "ipv4_only",
         "strategy": "ipv4_only",
         "detour": "direct"
-      },
-      {
-        "tag": "rcode",
-        "address": "rcode://refused"
       }
     ],
     "rules": [
       {
         "outbound": "any",
         "server": "local",
-        "disable_cache": true
-      },
-      {
-        "rule_set": [
-          "domain",
-          "geosite-category-ads-all",
-          "geosite-oisd-full"
-        ],
-        "server": "rcode",
         "disable_cache": true
       }
     ],
@@ -98,35 +85,6 @@
       {
         "port": 53,
         "outbound": "dns"
-      }
-    ],
-    "rule_set": [
-      {
-        "type": "remote",
-        "tag": "domain",
-        "path": "file/domain.json",
-        "format": "source",
-        "url": "https://raw.githubusercontent.com/ggschatzi/any/main/domain.json",
-        "download_detour": "GLOBAL",
-        "update_interval": "24h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-category-ads-all",
-        "path": "file/geosite-category-ads-all.srs",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/malikshi/sing-box-geo/rule-set-geosite/geosite-category-ads-all.srs",
-        "download_detour": "GLOBAL",
-        "update_interval": "24h0m0s"
-      },
-      {
-        "type": "remote",
-        "tag": "geosite-oisd-full",
-        "path": "file/geosite-oisd-full.srs",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/malikshi/sing-box-geo/rule-set-geosite/geosite-oisd-full.srs",
-        "download_detour": "GLOBAL",
-        "update_interval": "24h0m0s"
       }
     ],
     "final": "GLOBAL",
