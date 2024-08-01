@@ -44,17 +44,17 @@
       "type": "vless",
       "tag": "atp.sing-box.id",
       "domain_strategy": "ipv4_only",
-      "server": "quiz.int.vidio.com",
+      "server": "ava.game.naver.com",
       "server_port": 443,
       "uuid": "ddd4b0f8-2814-44c1-8519-958674f4df7f",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "quiz.int.vidio.com.atp.sing-box.id"
+        "server_name": "ava.game.naver.com.atp.sing-box.id"
       },
       "transport": {
         "type": "httpupgrade",
-        "host": "quiz.int.vidio.com.atp.sing-box.id",
+        "host": "ava.game.naver.com.atp.sing-box.id",
         "path": "/buy-vless-upgrade-pm-telegram-at-synricha"
       },
       "packet_encoding": "xudp"
