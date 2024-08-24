@@ -10,10 +10,14 @@
       },
       {
         "tag": "local",
-        "address": "112.215.198.254",
+        "address": "192.168.135.30",
         "address_strategy": "ipv4_only",
         "strategy": "ipv4_only",
         "detour": "direct"
+      },
+      {
+        "tag": "rcode",
+        "address": "rcode://refused"
       }
     ],
     "rules": [
@@ -21,11 +25,30 @@
         "outbound": "any",
         "server": "local",
         "disable_cache": true
+      },
+      {
+        "rule_set": [
+          "domain",
+          "geosite-category-ads-all",
+          "geosite-oisd-full"
+        ],
+        "server": "rcode",
+        "disable_cache": true
       }
     ],
     "final": "remote_dns",
-    "strategy": "ipv4_only"
+    "strategy": "ipv4_only",
+    "disable_cache": true
   },
+  "inbounds": [
+    {
+      "type": "tproxy",
+      "tag": "tproxy-in",
+      "listen": "::",
+      "listen_port": 9898,
+      "sniff": true
+    }
+  ],
   "inbounds": [
     {
       "type": "tun",
@@ -42,19 +65,19 @@
   "outbounds": [
     {
       "type": "vless",
-      "tag": "atp.sing-box.id",
+      "tag": "as983.sing-box.id",
       "domain_strategy": "ipv4_only",
-      "server": "ava.game.naver.com",
+      "server": "rg.ipvpn.my.id",
       "server_port": 443,
-      "uuid": "ddd4b0f8-2814-44c1-8519-958674f4df7f",
+      "uuid": "19300abf-6b97-4bcd-bf53-cff3e31c041f",
       "tls": {
         "enabled": true,
         "insecure": true,
-        "server_name": "ava.game.naver.com.atp.sing-box.id"
+        "server_name": "as983.sing-box.id"
       },
       "transport": {
         "type": "httpupgrade",
-        "host": "ava.game.naver.com.atp.sing-box.id",
+        "host": "as983.sing-box.id",
         "path": "/buy-vless-upgrade-pm-telegram-at-synricha"
       },
       "packet_encoding": "xudp"
@@ -63,7 +86,7 @@
       "type": "selector",
       "tag": "GLOBAL",
       "outbounds": [
-        "atp.sing-box.id",
+        "as983.sing-box.id",
         "direct"
       ]
     },
@@ -85,6 +108,36 @@
       {
         "port": 53,
         "outbound": "dns"
+      },
+      {
+        "protocol": "dns",
+        "outbound": "dns"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "domain",
+        "format": "source",
+        "url": "https://raw.githubusercontent.com/ggschatzi/any/main/domain.json",
+        "download_detour": "GLOBAL",
+        "update_interval": "24h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-category-ads-all",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/malikshi/sing-box-geo/rule-set-geosite/geosite-category-ads-all.srs",
+        "download_detour": "GLOBAL",
+        "update_interval": "24h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-oisd-full",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/malikshi/sing-box-geo/rule-set-geosite/geosite-oisd-full.srs",
+        "download_detour": "GLOBAL",
+        "update_interval": "24h0m0s"
       }
     ],
     "final": "GLOBAL",
@@ -93,7 +146,14 @@
   "experimental": {
     "clash_api": {
       "external_controller": "0.0.0.0:9090",
-      "external_ui": "dashboard"
+      "access_control_allow_origin": [
+        "http://0.0.0.0",
+        "http://yacd.haishan.me"
+      ],
+      "access_control_allow_private_network": true,
+      "external_ui": "",
+      "external_ui_download_url": "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+      "external_ui_download_detour: "GLOBAL"
     }
   }
 }
