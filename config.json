@@ -49,19 +49,6 @@
       "sniff": true
     }
   ],
-  "inbounds": [
-    {
-      "type": "tun",
-      "tag": "tun-in",
-      "interface_name": "utun",
-      "mtu": 9000,
-      "inet4_address": "172.18.0.1/30",
-      "auto_route": true,
-      "inet4_route_exclude_address": "192.168.0.0/16",
-      "stack": "gvisor",
-      "sniff": true
-    }
-  ],
   "outbounds": [
     {
       "type": "vless",
