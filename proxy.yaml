@@ -1,0 +1,84 @@
+proxies:
+- name: as983.sing-box.sbs
+  server: quiz.int.vidio.com
+  port: 443
+  type: vless
+  uuid: 19300abf-6b97-4bcd-bf53-cff3e31c041f
+  tls: true
+  servername: as983.sing-box.sbs
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /random/random/random/random/random/buy-vless-upgrade-pm-telegram-at-synricha
+    headers:
+      Host: as983.sing-box.sbs
+    v2ray-http-upgrade: true
+- name: hk.axelnet.tech
+  server: quiz.int.vidio.com
+  port: 443
+  type: vmess
+  uuid: a60dfa1b-ca60-4b71-acec-d8bcbeb2a5f5
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: hk.axelnet.tech
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /rsv
+    headers:
+      Host: hk.axelnet.tech
+
+
+- name: vmess_ws_https_backupAS983_VVIP_vmess_3182
+  server: quiz.int.vidio.com
+  port: 443
+  type: vmess
+  uuid: e023c20d-3dd0-4546-a8a0-1558ae3d376e
+  alterId: 0
+  cipher: auto
+  tls: true
+  servername: queen.sing-box.sbs
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /modern-master-to-security-practices/random/random/random/random/buy-vmess-ws-pm-telegram-at-synricha
+    headers:
+      Host: queen.sing-box.sbs
+
+
+
+
+- name: trojan_WS_BackupTrojanAS983_VVIP_trojan_1274
+  server: quiz.int.vidio.com
+  port: 443
+  type: trojan
+  password: bcfcd8bc07ae1975
+  sni: queen.sing-box.sbs
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /complete-tips-to-gadgets/random/random/random/random/buy-trojan-ws-pm-telegram-at-synricha
+    headers:
+      Host: queen.sing-box.sbs
+
+
+
+- name: vless_ws_https_BackupVlessAS983_VVIP_vless_6423
+  server: quiz.int.vidio.com
+  port: 443
+  type: vless
+  uuid: 49deaf69-7f4e-4ad7-bdae-26380eb52ce4
+  tls: true
+  servername: queen.sing-box.sbs
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /comprehensive-optimize-to-security-practices/random/random/random/random/buy-vless-ws-pm-telegram-at-synricha
+    headers:
+      Host: queen.sing-box.sbs
